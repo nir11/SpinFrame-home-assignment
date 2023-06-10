@@ -1,0 +1,42 @@
+.cars-table-container {
+  margin: 0 40px;
+  padding-bottom: 40px;
+  .cars-header {
+    direction: rtl;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .table-actions-container {
+    display: flex;
+    justify-content: space-between;
+    button {
+      width: 200px;
+    }
+  }
+  .show-only-active {
+    cursor: pointer;
+  }
+  .car-button {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    margin: 0 10px;
+    font-size: 18px;
+  }
+  table {
+    text-align: center;
+    th:last-child,
+    td:last-child {
+      width: 100px;
+    }
+  }
+  input[type="search"] {
+    --bs-table-border-color: var(--bs-border-color);
+    border-radius: 5px;
+  }
+}

@@ -1,0 +1,45 @@
+.App {
+  height: 100vh;
+  direction: rtl;
+}
+
+header {
+  margin-bottom: 30px;
+  text-align: center;
+  color: whitesmoke;
+  background-color: #373b41;
+  h1 {
+    display: inline;
+  }
+  .developer-details {
+    padding-top: 5px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 20px;
+    width: 300px;
+    .github-icon {
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    .linkedin-icon {
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+h1 {
+  display: inline;
+  margin-left: 20px;
+}
+
+.btn-close {
+  position: absolute;
+  left: 0;
+}
