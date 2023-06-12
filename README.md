@@ -1,4 +1,5 @@
 # Car Management System
+![car-management-system](https://github.com/nir11/car-management-system/assets/23150023/35268826-f351-4323-a2fb-dc91968a9114)
 
 This readme provides instructions on how to run the server and client projects of the **car-management-system**
 project.
