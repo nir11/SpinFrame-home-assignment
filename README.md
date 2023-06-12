@@ -1,15 +1,15 @@
-# SpinFrame Home Assignment
+# Car Management System
 
 This readme provides instructions on how to run the server and client projects of the **SpinFrame-home-assignment**
 project.
 
 Project structure:
 
-- `server` directory
+- `server` directory (.NET Core 6.0 Web API)
 
-- `client` directory
+- `client` directory (Reac app)
 
-- `SpinFrae.bak` (SQL Server backup file)
+- `CarsManagement.bak` (SQL Server backup file)
 
 ## Server
 
@@ -18,21 +18,23 @@ The server is built using .NET Core 6.0 and runs on port 7176.
 ### Requirements
 
 - .NET Core 6.0 SDK must be installed on your machine.
-- SQL Server with the **SpinFrame** database (Use the provided **SpinFrame.bak** file to restore the database).
+- SQL Server with the **CarsManagement** database (Use the provided **CarsManagement.bak** file to restore the database).
 
 ### Instructions
 
-1. Restore the SQL Server database `SpinFrame.bak`.
+1. Restore the SQL Server database `CarsManagement.bak`.
 
-2. Open a terminal and navigate to the `server` directory.
+2. Navigate to the `server` directory.
 
-3. Run the following command to build and run the server:
+3. Open the file named `appsettings.json` and change the `ConnectionStrings.DefaultConnection` accordingly to your machine connection string;
+
+4. Open a terminal and run the following command to build and run the server:
 
    ```
    dotnet run
    ```
 
-4. The server will start running on port 7176.
+5. The server will start running on port 7176.
 
 ## Client
 
