@@ -1,10 +1,10 @@
 .App {
   height: 100vh;
-  direction: rtl;
 }
 
 header {
   margin-bottom: 30px;
+  padding-bottom: 10px;
   text-align: center;
   color: whitesmoke;
   background-color: #373b41;
@@ -12,7 +12,8 @@ header {
     display: inline;
   }
   .developer-details {
-    padding-top: 5px;
+    padding-top: 10px;
+    margin-bottom: 30px;
     position: absolute;
     top: 0;
     right: 0;
@@ -36,10 +37,5 @@ header {
 
 h1 {
   display: inline;
-  margin-left: 20px;
-}
-
-.btn-close {
-  position: absolute;
-  left: 0;
+  margin-right: 20px;
 }

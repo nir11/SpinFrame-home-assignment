@@ -64,7 +64,6 @@ export const CarFormModal: FC<Props> = ({ initialCar, setCars, close }) => {
   };
 
   const validate = (): boolean => {
-    console.log("check car", car);
     let newErrors = Array.from({ length: Object.keys(car).length }, () => ({
       show: false,
       text: "",
@@ -74,44 +73,44 @@ export const CarFormModal: FC<Props> = ({ initialCar, setCars, close }) => {
     if (car.licensePlateNumber.replace(/\s/g, "").length === 0) {
       newErrors[Object.keys(car).indexOf("licensePlateNumber")] = {
         show: true,
-        text: "שדה ריק",
+        text: "Empty fld",
       };
     }
     // check if license plate number contains characters and/or numbers only
     else if (!/^[a-zA-Z0-9]+$/.test(car.licensePlateNumber)) {
       newErrors[Object.keys(car).indexOf("licensePlateNumber")] = {
         show: true,
-        text: "השדה חייב להכיל מספרים ואותיות בלבד",
+        text: "The field must contain only characters and number",
       };
     }
     if (car.color.replace(/\s/g, "").length === 0) {
       newErrors[Object.keys(car).indexOf("color")] = {
         show: true,
-        text: "שדה ריק",
+        text: "Empty fld",
       };
     }
 
     if (car.manufacturer.replace(/\s/g, "").length === 0) {
       newErrors[Object.keys(car).indexOf("manufacturer")] = {
         show: true,
-        text: "שדה ריק",
+        text: "Empty fld",
       };
     }
 
     if (car.model.replace(/\s/g, "").length === 0) {
       newErrors[Object.keys(car).indexOf("model")] = {
         show: true,
-        text: "שדה ריק",
+        text: "Empty fld",
       };
     }
     if (car.year == 0) {
       newErrors[Object.keys(car).indexOf("year")] = {
         show: true,
-        text: "שדה ריק",
+        text: "Empty fld",
       };
     }
     setErrors(newErrors);
-    console.log("newErrors", newErrors);
+
     if (newErrors.some((err) => err.show)) {
       return false;
     }
@@ -140,7 +139,7 @@ export const CarFormModal: FC<Props> = ({ initialCar, setCars, close }) => {
           // Car already exists error
           setServerError({
             show: true,
-            text: "לוחית רישוי זו כבר קיימת במערכת",
+            text: "License plate number already exists in system",
           });
         } else console.log(error);
         setLoading(false);
@@ -173,7 +172,7 @@ export const CarFormModal: FC<Props> = ({ initialCar, setCars, close }) => {
           // Car already exists error
           setServerError({
             show: true,
-            text: "לוחית רישוי זו כבר קיימת במערכת",
+            text: "License plate number already exists in system",
           });
         } else console.log(error);
         setLoading(false);
@@ -193,21 +192,21 @@ export const CarFormModal: FC<Props> = ({ initialCar, setCars, close }) => {
   return (
     <Modal
       show
-      // size="lg"
+      size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
-      <Modal.Dialog style={{ margin: "0" }} dir="rtl">
+      <Modal.Dialog style={{ margin: "0" }}>
         <Modal.Header closeButton onClick={close}>
-          <Modal.Title>{initialCar ? "עדכון" : "רישום"} רכב</Modal.Title>
+          <Modal.Title>{initialCar ? "Update" : "New"} Car</Modal.Title>
         </Modal.Header>
 
-        <Modal.Body dir="rtl">
+        <Modal.Body>
           <div className="car-form-container">
             <form onSubmit={handleSubmit} noValidate>
               <div className="info-wrapper ">
                 <div className="input-and-label-container">
-                  <label>מס' לוחית רישוי</label>
+                  <label>License plate number</label>
                   <input
                     type="text"
                     name="licensePlateNumber"
@@ -230,7 +229,7 @@ export const CarFormModal: FC<Props> = ({ initialCar, setCars, close }) => {
               </p>
               <div className="info-wrapper ">
                 <div className="input-and-label-container">
-                  <label>צבע</label>
+                  <label>Color</label>
                   <Form.Control
                     as="select"
                     name="color"
@@ -238,10 +237,10 @@ export const CarFormModal: FC<Props> = ({ initialCar, setCars, close }) => {
                     value={car.color}
                     onChange={handleChange}
                   >
-                    <option value="">בחר צבע...</option>
-                    <option value="אדום">אדום</option>
-                    <option value="ירוק">ירוק</option>
-                    <option value="כסוף">כסוף</option>
+                    <option value="">Choose color...</option>
+                    <option value="Red">Red</option>
+                    <option value="Green">Green</option>
+                    <option value="Silver">Silver</option>
                   </Form.Control>
                 </div>
               </div>
@@ -257,7 +256,7 @@ export const CarFormModal: FC<Props> = ({ initialCar, setCars, close }) => {
               </p>
               <div className="info-wrapper ">
                 <div className="input-and-label-container">
-                  <label>יצרן</label>
+                  <label>Manufacturer</label>
                   <Form.Control
                     as="select"
                     name="manufacturer"
@@ -265,7 +264,7 @@ export const CarFormModal: FC<Props> = ({ initialCar, setCars, close }) => {
                     value={car.manufacturer}
                     onChange={handleChange}
                   >
-                    <option value="">בחר יצרן...</option>
+                    <option value="">Choose manufacturer...</option>
                     <option value="BMW">BMW</option>
                     <option value="Audi">Audi</option>
                     <option value="Volkswagen">Volkswagen</option>
@@ -285,7 +284,7 @@ export const CarFormModal: FC<Props> = ({ initialCar, setCars, close }) => {
               </p>
               <div className="info-wrapper ">
                 <div className="input-and-label-container">
-                  <label>מודל</label>
+                  <label>Model</label>
                   <input
                     type="text"
                     name="model"
@@ -306,7 +305,7 @@ export const CarFormModal: FC<Props> = ({ initialCar, setCars, close }) => {
               </p>
               <div className="info-wrapper ">
                 <div className="input-and-label-container">
-                  <label>שנתון</label>
+                  <label>Year</label>
                   <Form.Control
                     as="select"
                     name="year"
@@ -314,7 +313,7 @@ export const CarFormModal: FC<Props> = ({ initialCar, setCars, close }) => {
                     value={car.year}
                     onChange={handleChange}
                   >
-                    <option value={0}>בחר שנה...</option>
+                    <option value={0}>Choose year...</option>
                     {range(2010, 2021).map((year: number) => (
                       <option value={year}>{year}</option>
                     ))}
@@ -342,7 +341,7 @@ export const CarFormModal: FC<Props> = ({ initialCar, setCars, close }) => {
 
               <div className="bottom-buttons-container">
                 <Button variant="primary" type="submit">
-                  {initialCar ? "עדכון" : "הוספה"}
+                  Save
                   {loading && (
                     <FontAwesomeIcon
                       icon={faSpinner}
@@ -352,7 +351,7 @@ export const CarFormModal: FC<Props> = ({ initialCar, setCars, close }) => {
                   )}
                 </Button>
                 <Button variant="secondary" onClick={close}>
-                  סגירה
+                  Close
                 </Button>
               </div>
             </form>

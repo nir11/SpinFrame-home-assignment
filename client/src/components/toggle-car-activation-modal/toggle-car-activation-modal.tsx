@@ -52,7 +52,11 @@ export const ToggleCarActivationModal: FC<Props> = ({
                 prevCar.color.toLowerCase().includes(search.toLowerCase())
             )
         );
-        toast(car.active ? "הרכב הוסר!" : "הרכב הופעל!");
+        toast(
+          car.active
+            ? "Car removed successfully!"
+            : "Car activated successfully!"
+        );
         close();
       } else {
         console.log(error);
@@ -71,17 +75,21 @@ export const ToggleCarActivationModal: FC<Props> = ({
       centered
       style={{ minHeight: "200px" }}
     >
-      <Modal.Dialog style={{ width: "100%", margin: "0" }} dir="rtl">
+      <Modal.Dialog style={{ width: "100%", margin: "0" }}>
         <Modal.Header closeButton onClick={close}>
-          <Modal.Title>{car.active ? "הסרת רכב" : "הפעלת רכב"}</Modal.Title>
+          <Modal.Title>
+            {car.active ? "Remove Car" : "Activate Car"}
+          </Modal.Title>
         </Modal.Header>
 
-        <Modal.Body dir="rtl">
+        <Modal.Body>
           <p>
-            האם את/ה בטוח/ה שברצונך {car.active ? "להסיר" : "להפעיל"} את הרכב `
-            <span
-              style={{ fontStyle: "italic" }}
-            >{`${car.model}, ${car.manufacturer}`}</span>
+            Are you sure you want to {car.active ? "remove" : "activate"} the
+            car
+            <span style={{ fontStyle: "italic" }}>
+              {" "}
+              `{`${car.model}, ${car.manufacturer}`}
+            </span>
             `?
           </p>
         </Modal.Body>
@@ -92,7 +100,7 @@ export const ToggleCarActivationModal: FC<Props> = ({
             onClick={toggleCarActivation}
             style={{ width: "100px" }}
           >
-            {car.active ? "מחיקה" : "הפעלה"}
+            {car.active ? "Remove" : "Activate"}
             {loading && (
               <FontAwesomeIcon
                 icon={faSpinner}
@@ -106,7 +114,7 @@ export const ToggleCarActivationModal: FC<Props> = ({
             onClick={close}
             style={{ width: "100px" }}
           >
-            ביטול
+            Cancel
           </Button>
         </Modal.Footer>
       </Modal.Dialog>

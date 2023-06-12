@@ -1,6 +1,6 @@
 # Car Management System
 
-This readme provides instructions on how to run the server and client projects of the **SpinFrame-home-assignment**
+This readme provides instructions on how to run the server and client projects of the **car-management-system**
 project.
 
 Project structure:

@@ -15,7 +15,7 @@ function App() {
         hideProgressBar
         newestOnTop={false}
         closeOnClick
-        rtl={true}
+        rtl={false}
         pauseOnFocusLoss
         draggable
         pauseOnHover
@@ -26,7 +26,7 @@ function App() {
 
       <header>
         <div>
-          <h1>ניהול צי רכב</h1>
+          <h1>Car Management System</h1>
           <FontAwesomeIcon icon={faCar} size="2x" />
         </div>
 

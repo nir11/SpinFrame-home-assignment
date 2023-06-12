@@ -97,10 +97,13 @@ export const CarsTable = () => {
         />
       )}
 
-      <div className="cars-header" style={{ direction: "rtl" }}>
+      <div className="cars-header">
         <div className="table-actions-container">
           <div>
-            <InputGroup className="d-flex align-items-center">
+            <InputGroup
+              className="d-flex align-items-center"
+              style={{ marginBottom: "5px" }}
+            >
               <InputGroup.Checkbox
                 id="checkbox"
                 aria-label="Checkbox for following text input"
@@ -108,13 +111,13 @@ export const CarsTable = () => {
                 onChange={(e: any) => setShowOnlyActive(e.target.checked)}
               />
               <label htmlFor="checkbox" className="show-only-active">
-                הצג פעילים בלבד
+                Show only active
               </label>
             </InputGroup>
             <input
               type="search"
               className="form-control"
-              placeholder="חיפוש לפי מס' לוחית רישוי, צבע, יצרן, מודל, שנתון..."
+              placeholder="Search by car license number, color, manufacturer, model, year..."
               style={{ width: "400px" }}
               value={search}
               onChange={(e: any) => {
@@ -134,7 +137,7 @@ export const CarsTable = () => {
             });
           }}
         >
-          רישום רכב חדש
+          Add new Car
         </Button>
       </div>
 
@@ -142,11 +145,11 @@ export const CarsTable = () => {
         <thead>
           <tr>
             <th></th>
-            <th>מס' לוחית רישוי</th>
-            <th>צבע</th>
-            <th>יצרן</th>
-            <th>מודל</th>
-            <th>שנתון</th>
+            <th>License Plate Number</th>
+            <th>Color</th>
+            <th>Manufacturer</th>
+            <th>Model</th>
+            <th>Year</th>
             <th></th>
           </tr>
         </thead>
@@ -154,14 +157,14 @@ export const CarsTable = () => {
           {loading ? (
             <tr>
               <td></td>
-              <td colSpan={5}>טוען...</td>
+              <td colSpan={5}>Loading...</td>
             </tr>
           ) : (
             <>
               {cars.length == 0 ? (
                 <tr>
                   <td></td>
-                  <td colSpan={5}>לא נמצאו רכבים</td>
+                  <td colSpan={5}>No cars found</td>
                 </tr>
               ) : (
                 cars.map((car: Car, i: number) => {
@@ -208,7 +211,7 @@ export const CarsTable = () => {
                           key={car.licensePlateNumber}
                           className="car-button"
                           data-tooltip-id="tooltip"
-                          data-tooltip-content="עריכה"
+                          data-tooltip-content="Update"
                         >
                           <FontAwesomeIcon
                             icon={faEdit}
@@ -225,7 +228,9 @@ export const CarsTable = () => {
                           key={car.licensePlateNumber + i}
                           className="car-button"
                           data-tooltip-id="tooltip"
-                          data-tooltip-content={car.active ? "הסרה" : "הפעלה"}
+                          data-tooltip-content={
+                            car.active ? "Remove" : "Activate"
+                          }
                         >
                           <FontAwesomeIcon
                             icon={car.active ? faToggleOn : faToggleOff}
